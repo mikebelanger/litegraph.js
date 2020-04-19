@@ -1,0 +1,20 @@
+2020-04-19T17:26:46.608465000 0.015544s notice: Recursively removing directory /Users/mikebelanger/Dev/Personal/javascript/litegraph_test/litegraph.js/rethinkdb_data/tmp
+2020-04-19T17:26:46.610447000 0.017529s notice: Initializing directory /Users/mikebelanger/Dev/Personal/javascript/litegraph_test/litegraph.js/rethinkdb_data
+2020-04-19T17:26:46.610555000 0.017634s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/Users/mikebelanger/Dev/Personal/javascript/litegraph_test/litegraph.js/rethinkdb_data' did not already exist or is empty.)
+2020-04-19T17:26:46.610597000 0.017676s notice: Running rethinkdb 2.4.0 (CLANG 10.0.0 (clang-1000.11.45.5))...
+2020-04-19T17:26:46.615857000 0.022937s notice: Running on Darwin 17.7.0 x86_64
+2020-04-19T17:26:46.615930000 0.023009s notice: Loading data from directory /Users/mikebelanger/Dev/Personal/javascript/litegraph_test/litegraph.js/rethinkdb_data
+2020-04-19T17:26:47.028417000 0.435496s info: Automatically using cache size of 297 MB
+2020-04-19T17:26:47.029393000 0.436471s notice: Listening for intracluster connections on port 29015
+2020-04-19T17:26:47.031894000 0.438972s notice: Listening for client driver connections on port 28015
+2020-04-19T17:26:47.032020000 0.439099s notice: Listening for administrative HTTP connections on port 8080
+2020-04-19T17:26:47.032035000 0.439113s notice: Listening on cluster addresses: 127.0.0.1, ::1
+2020-04-19T17:26:47.032043000 0.439122s notice: Listening on driver addresses: 127.0.0.1, ::1
+2020-04-19T17:26:47.032052000 0.439130s notice: Listening on http addresses: 127.0.0.1, ::1
+2020-04-19T17:26:47.032060000 0.439139s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2020-04-19T17:26:47.032069000 0.439147s notice: Server ready, "Mikes_MBP_utq" 5a8fd22e-03b8-4e30-8664-aea185b26bcc
+2020-04-19T17:26:52.083276000 5.490355s notice: Server got SIGINT from pid 1112, uid 501; shutting down...
+2020-04-19T17:26:52.083646000 5.490725s notice: Shutting down client connections...
+2020-04-19T17:26:52.083777000 5.490855s notice: All client connections closed.
+2020-04-19T17:26:52.083791000 5.490870s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2020-04-19T17:26:52.084402000 5.491480s notice: Storage engine shut down.

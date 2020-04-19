@@ -1,7 +1,34 @@
 var webgl_canvas = null;
 
+var gun = Gun();
+	
 LiteGraph.node_images_path = "../nodes_data/";
 var editor = new LiteGraph.Editor("main");
+
+// added a generic update_db function to litegraph.js
+// we can redefine here to update GunDB
+editor.graph.update_db = function(node) {
+	console.log("node in callback: ", node);
+
+	// get kind of node
+	gun.get(node.id).get('type').put(node.type);
+
+	// get node position
+	gun.get(node.id).get('x').put(node.pos[0]);
+	gun.get(node.id).get('y').put(node.pos[1]);
+
+	// get node dimensions
+	gun.get(node.id).get('width').put(node.size[0]);
+	gun.get(node.id).get('height').put(node.size[1]);
+
+	// subscribe to future updates
+	gun.get(node.id).on(function(x) {
+		console.log("gun update callback values: ", x);
+	}, {
+		change: true
+	})
+}
+
 window.graphcanvas = editor.graphcanvas;
 window.graph = editor.graph;
 window.addEventListener("resize", function() { editor.graphcanvas.resize(); } );
@@ -10,6 +37,39 @@ window.onbeforeunload = function(){
 	var data = JSON.stringify( graph.serialize() );
 	localStorage.setItem("litegraphg demo backup", data );
 }
+
+// window.addEventListener('storage', function() {
+// 	// sync up with pouchdb
+// 	// console.log(graph);
+// 	// console.log(graph._nodes_in_order);
+// 	//console.log(graph._nodes_in_order[graph._nodes_in_order.length - 1]);
+// 	console.log(window.localStorage);
+// 	try {
+
+// 		if (graph._nodes_in_order.length !== 0) {
+			
+// 			var newest_node = {
+// 			_id: graph._nodes_in_order[graph._nodes_in_order.length - 1].id
+// 			}
+
+// 			for (each_property in graph._nodes_in_order[graph._nodes_in_order.length - 1]) {
+// 				if (each_property != 'id') {
+// 					newest_node[each_property] = graph._nodes_in_order[graph._nodes_in_order.length - 1].each_property;
+// 				}
+// 			}
+// 		}
+
+// 	} catch(e) {
+// 		console.log(e);
+// 	}
+
+// 	for (var i = 0; i < graph._nodes_in_order.length; i++) {
+// 		db.get(i).then(function(x) {
+// 			console.log(x);
+// 		})
+// 	}
+
+// });
 
 //enable scripting
 LiteGraph.allow_scripts = true;
@@ -31,6 +91,7 @@ select.addEventListener("change", function(e){
 	else
 		graph.clear();
 });
+
 
 elem.querySelector("#save").addEventListener("click",function(){
 	console.log("saved");

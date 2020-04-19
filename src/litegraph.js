@@ -93,7 +93,6 @@
         Nodes: {}, //node types by classname
 
         searchbox_extras: {}, //used to add extra features to the search box
-
         /**
          * Register a node class so it can be listed when the user wants to create a new one
          * @method registerNodeType
@@ -1212,7 +1211,10 @@
 
         if (this.onNodeAdded) {
             this.onNodeAdded(node);
+
         }
+        // updates database
+        this.update_db(node);
 
         this.setDirtyCanvas(true);
         this.change();
@@ -1795,6 +1797,11 @@
         }
     };
 
+    LGraph.prototype.update_db = function() {
+        // redefine this logic in whatever top-level file you invoke 
+        // Litegraph from
+    }
+
     /* Called when something visually changed (not the graph!) */
     LGraph.prototype.change = function() {
         if (LiteGraph.debug) {
@@ -1803,6 +1810,13 @@
         this.sendActionToCanvas("setDirty", [true, true]);
         if (this.on_change) {
             this.on_change(this);
+        }
+        
+        console.log(this);
+
+        for (var i = 0; i < this._nodes_in_order.length; i++) {
+            console.log(this);
+            this.update_db(this._nodes_in_order[i]);
         }
     };
 

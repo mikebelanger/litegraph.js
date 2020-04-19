@@ -1,3 +1,4 @@
+console.log("calling from demo js")
 
 function demo()
 {
@@ -223,4 +224,6 @@ TestPropertyEditorsNode.title = "Properties";
 
 
 LiteGraph.registerNodeType("features/properties_editor", TestPropertyEditorsNode );
+
+console.log("calling from code.js");
 
